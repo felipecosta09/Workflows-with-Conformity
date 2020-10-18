@@ -37,6 +37,4 @@ jobs:
               aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
               aws-region: us-east-1
           - name: Deploy Cloud Formation to AWS
-            run: aws cloudformation deploy /
-                --template-file myapp.yaml
-                --stack-name myapp
+            run: aws cloudformation deploy --template-file myapp.yaml --stack-name myapp
