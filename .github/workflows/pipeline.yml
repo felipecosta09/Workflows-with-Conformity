@@ -15,7 +15,7 @@ on:
       - main
       
 jobs:      
-    Cloud-One-Conformity-Scan-Security:
+    Application-Deploy:
        runs-on: ubuntu-latest
        steps:
           - uses: actions/checkout@v2
@@ -24,9 +24,19 @@ jobs:
             env:
               cc_apikey: ${{ secrets.CC_APIKEY }}
               maxExtreme: 0
-              maxVeryHigh: 10
-              maxHigh: 10
+              maxVeryHigh: 0
+              maxHigh: 0
               maxMedium: 10
               maxLow: 10
               cc_region: us-west-2
               templatePath: myapp.yaml
+          - name: Configure AWS Credentials
+            uses: aws-actions/configure-aws-credentials@v1
+            with:
+              aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+              aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+              aws-region: us-east-1
+          - name: Deploy Cloud Formation to AWS
+            run: aws cloudformation deploy /
+                --template-file myapp.yaml
+                --stack-name myapp
