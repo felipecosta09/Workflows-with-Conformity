@@ -29,7 +29,7 @@ jobs:
               maxMedium: 10
               maxLow: 10
               cc_region: us-west-2
-              templatePath: myapp.yaml
+              templatePath: myapp_fix.yaml
           - name: Configure AWS Credentials
             uses: aws-actions/configure-aws-credentials@v1
             with:
