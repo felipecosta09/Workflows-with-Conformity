@@ -4,6 +4,12 @@ Resources:
     Type: AWS::S3::Bucket
     Properties:
       AccessControl: Private
+      # Fix Bucket Encryption
+      BucketEncryption:
+        ServerSideEncryptionConfiguration: 
+          -
+            ServerSideEncryptionByDefault:
+              SSEAlgorithm: AES256
       WebsiteConfiguration:
         IndexDocument: index.html
         ErrorDocument: error.html
