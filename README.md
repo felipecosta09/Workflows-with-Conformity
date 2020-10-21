@@ -7,6 +7,16 @@
 
 #### In this example, we're running the scanner against the ```myapp.yaml``` Cloud Formation Template which is updating a S3 buckets that stores a Static Website. To scan this template we're using VSCode with the [Conformity Extension from the marketplace](https://marketplace.visualstudio.com/items?itemName=raphaelbottino.cc-template-scanner), to scan in our CI/CD pipeline, we're using our [GitHub Action](https://github.com/marketplace/actions/cloud-one-conformity-pipeline-scanner) published in the GitHub Marketplace and inside the ```.github/workflow``` we have our pipeline file that describe the actions taken.
 
+
+```
+# Fix Bucket Encryption
+      BucketEncryption:
+        ServerSideEncryptionConfiguration: 
+          -
+            ServerSideEncryptionByDefault:
+              SSEAlgorithm: AES256
+```
+
 ![](CF_topology.png)
 
 

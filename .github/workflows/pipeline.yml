@@ -29,7 +29,7 @@ jobs:
               maxMedium: 10
               maxLow: 10
               cc_region: us-west-2
-              templatePath: myapp_fix.yaml
+              templatePath: myapp.yaml
           - name: Configure AWS Credentials
             uses: aws-actions/configure-aws-credentials@v1
             with:
@@ -37,4 +37,4 @@ jobs:
               aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
               aws-region: us-east-1
           - name: Deploy Cloud Formation to AWS
-            run: aws cloudformation deploy --template-file myapp_fix.yaml --stack-name cloudsec2020-comformity 
+            run: aws cloudformation deploy --template-file myapp.yaml --stack-name cloudsec2020-workflows-with-comformity 
